@@ -1,12 +1,12 @@
 package br.ufes.ceunes.projeta.model;
 
 public class Login {
-	Integer matricula;
+	Long matricula;
 	String senha;
-	public Integer getMatricula() {
+	public Long getMatricula() {
 		return matricula;
 	}
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
 	}
 	public String getSenha() {

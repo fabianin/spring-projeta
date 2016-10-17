@@ -1,11 +1,14 @@
 package br.ufes.ceunes.projeta.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-
-import br.ufes.ceunes.projeta.controllers.Ponto;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Membro {
@@ -21,15 +24,15 @@ public class Membro {
 	private String dicaSenha;
 	private String naturalidade;
 	private TipoCargo cargo;
-	private Ponto ponto = null;
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<Ponto> pontos = new ArrayList<>();
 	
 	
-	public Ponto getPonto() {
-		return ponto;
+	public List<Ponto> getPontos() {
+		return pontos;
 	}
-	public void setPonto(Ponto ponto) {
-		this.ponto = ponto;
-	}
+	
+
 	public TipoCargo getCargo() {
 		return cargo;
 	}

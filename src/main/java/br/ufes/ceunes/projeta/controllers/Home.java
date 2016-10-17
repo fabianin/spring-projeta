@@ -3,7 +3,7 @@ package br.ufes.ceunes.projeta.controllers;
 
 
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.ufes.ceunes.projeta.model.Login;
 import br.ufes.ceunes.projeta.model.Membro;
+import br.ufes.ceunes.projeta.model.Ponto;
 import br.ufes.ceunes.projeta.model.TipoCargo;
 import br.ufes.ceunes.projeta.repository.JPAPonto;
 import br.ufes.ceunes.projeta.repository.JPAmembro;
@@ -72,26 +73,31 @@ public class Home {
 	}
 	@RequestMapping(value = "/ponto", method=RequestMethod.POST)
 	public ModelAndView salvarPonto(Login login){
-		ModelAndView mv = new ModelAndView("ponto");
-		Membro membroLogin = membros.findOne(login.getMatricula());
+		Membro membroLogin = membros.findOne(login.getMatricula().intValue());
 		if(membroLogin == null){
 			return null;
+			
 		}
 		if(membroLogin.getSenha() != login.getSenha()){
 			return null;
 		}
-		if(membroLogin.getPonto() == null){
-			Ponto membroPonto = new Ponto(login.getMatricula(), LocalDate.now());
-			membroLogin.setPonto(membroPonto);
-			membros.save(membroLogin);
+		Ponto ponto = pontos.findOne(login.getMatricula());
+		if(ponto == null){
+			Instant agora = Instant.now();
+			ponto = new Ponto(membroLogin,agora);
+			pontos.save(ponto);
+			ModelAndView mv = new ModelAndView("redirect:/home");
 			return mv;
 		} else{
-			LocalDate saida = LocalDate.now();
-			membroLogin.getPonto().setSaida(saida);
-			pontos.save(membroLogin.getPonto());
-			membroLogin.setPonto(null);
+			Instant fechaPonto = Instant.now();
+			ponto.setSaida(fechaPonto);
+			membroLogin.getPontos().add(ponto);
+			pontos.delete(ponto);
+			membros.save(membroLogin);
+			ModelAndView mv = new ModelAndView("redirect:/home");
 			return mv;
 		}
+		
 	}
 //	@RequestMapping("/listar/pontos")
 //	public ModelAndView listarPontos(){
@@ -102,6 +108,7 @@ public class Home {
 //		mv.addObject("pontos", todosPontos);
 //		return mv;
 //	}
+	
 	
 	
 	

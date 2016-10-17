@@ -6,4 +6,6 @@ import br.ufes.ceunes.projeta.model.Membro;
 
 public interface JPAmembro extends JpaRepository<Membro, Integer> {
 
+	
+
 }
