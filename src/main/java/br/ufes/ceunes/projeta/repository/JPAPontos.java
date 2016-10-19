@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.ufes.ceunes.projeta.model.Ponto;
 
-public interface JPAPonto extends JpaRepository<Ponto, Long> {
+public interface JPAPontos extends JpaRepository<Ponto, Long>{
 
 }

@@ -4,8 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.ufes.ceunes.projeta.model.Membro;
 
-public interface JPAmembro extends JpaRepository<Membro, Integer> {
-
-	
+public interface JPAMembro extends JpaRepository<Membro, Long>{
 
 }

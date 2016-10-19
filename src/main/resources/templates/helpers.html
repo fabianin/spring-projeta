@@ -26,5 +26,17 @@
 		  </div>
 		</nav>
 	</div>
+
+	<div th:fragment="abasListas(ativa)">
+		<ul class="nav nav-pills">
+			<!-- <li role="presentation" th:class="${ativa=='home'} ? active : null"><a href="#">Home</a></li> -->
+			<li role="presentation" th:class="${ativa=='membros'} ? active : null"><a th:href="@{/listar/membros}">Membros</a></li>
+			<li role="presentation" th:class="${ativa=='ponto'} ? active : null"><a href="#">Pontos por membro</a></li>
+		</ul>
+	</div>
+	
+
+	
+	
   	</body>
 </html>

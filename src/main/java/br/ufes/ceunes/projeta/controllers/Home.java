@@ -16,9 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import br.ufes.ceunes.projeta.model.Login;
 import br.ufes.ceunes.projeta.model.Membro;
 import br.ufes.ceunes.projeta.model.Ponto;
+import br.ufes.ceunes.projeta.model.PontoAberto;
 import br.ufes.ceunes.projeta.model.TipoCargo;
-import br.ufes.ceunes.projeta.repository.JPAPonto;
-import br.ufes.ceunes.projeta.repository.JPAmembro;
+import br.ufes.ceunes.projeta.repository.JPAPontosAbertos;
+import br.ufes.ceunes.projeta.repository.JPAMembro;
 
 
 
@@ -29,10 +30,11 @@ import br.ufes.ceunes.projeta.repository.JPAmembro;
 public class Home {
 	
 	@Autowired
-	private JPAmembro membros;
+	private JPAMembro membros;
 	
+
 	@Autowired
-	private JPAPonto pontos;
+	private JPAPontosAbertos pontosAbertos;
 	
 	@RequestMapping("/")
 	@ResponseBody
@@ -61,6 +63,14 @@ public class Home {
 	@RequestMapping("/listar")
 	public ModelAndView listar(){
 		ModelAndView mv = new ModelAndView("listar");
+		//List<Membro> todosMembros = membros.findAll();
+		//mv.addObject("membros", todosMembros);
+		return mv;
+	}
+	
+	@RequestMapping("/listar/membros")
+	public ModelAndView listarMembros(){
+		ModelAndView mv = new ModelAndView("listarMembros");
 		List<Membro> todosMembros = membros.findAll();
 		mv.addObject("membros", todosMembros);
 		return mv;
@@ -73,41 +83,37 @@ public class Home {
 	}
 	@RequestMapping(value = "/ponto", method=RequestMethod.POST)
 	public ModelAndView salvarPonto(Login login){
-		Membro membroLogin = membros.findOne(login.getMatricula().intValue());
+		Membro membroLogin = membros.findOne(login.getMatricula().longValue());
 		if(membroLogin == null){
-			return null;
+			return new ModelAndView("cadastro");
 			
 		}
 		if(membroLogin.getSenha() != login.getSenha()){
-			return null;
+			new ModelAndView("login");
 		}
-		Ponto ponto = pontos.findOne(login.getMatricula());
-		if(ponto == null){
-			Instant agora = Instant.now();
-			ponto = new Ponto(membroLogin,agora);
-			pontos.save(ponto);
-			ModelAndView mv = new ModelAndView("redirect:/home");
-			return mv;
-		} else{
-			Instant fechaPonto = Instant.now();
-			ponto.setSaida(fechaPonto);
-			membroLogin.getPontos().add(ponto);
-			pontos.delete(ponto);
+		if(pontosAbertos.findOne(membroLogin.getMatricula())!=null){
+			PontoAberto pontoAberto = pontosAbertos.findOne(membroLogin.getMatricula());
+			Ponto pontoFechando = new Ponto(pontoAberto.getMatricula(), pontoAberto.getEntrada(), Instant.now());
+			membroLogin.getPontos().add(pontoFechando);
 			membros.save(membroLogin);
-			ModelAndView mv = new ModelAndView("redirect:/home");
-			return mv;
+			pontosAbertos.delete(pontoAberto);
+			return new ModelAndView("home");
+		}else {
+			PontoAberto pontoAberto = new PontoAberto(membroLogin.getMatricula(), Instant.now());
+			pontosAbertos.save(pontoAberto);
+			return new ModelAndView("listarMembros");
 		}
 		
 	}
-//	@RequestMapping("/listar/pontos")
-//	public ModelAndView listarPontos(){
-//		ModelAndView mv = new ModelAndView("listarPontos");
-//		List<Ponto> todosPontos = pontos.findAll();
-//		if(todosPontos == null)
-//			return new ModelAndView("home");
-//		mv.addObject("pontos", todosPontos);
-//		return mv;
-//	}
+	@RequestMapping("/listar/pontos")
+	public ModelAndView listarPontos(){
+		ModelAndView mv = new ModelAndView("listarPontos");
+		List<Ponto> todosPontos = membros.getOne(Long.getLong("2014101879")).getPontos();
+		if(todosPontos == null)
+			return new ModelAndView("home");
+		mv.addObject("pontos", todosPontos);
+		return mv;
+	}
 	
 	
 	

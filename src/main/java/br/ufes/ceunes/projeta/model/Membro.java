@@ -15,8 +15,9 @@ public class Membro {
 	private String nome;
 	private String sobrenome;
 	private String curso;
+	
 	@Id
-	private Integer matricula;
+	private Long matricula;
 	private LocalDate dataAdmissao;
 	private LocalDate dataNascimento;
 	private LocalDate dataDemissao;
@@ -73,12 +74,17 @@ public class Membro {
 	public void setCurso(String curso) {
 		this.curso = curso;
 	}
-	public Integer getMatricula() {
+	public Long getMatricula() {
 		return matricula;
 	}
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
 	}
+	public void setPontos(List<Ponto> pontos) {
+		this.pontos = pontos;
+	}
+
+
 	public LocalDate getDataAdmissao() {
 		return dataAdmissao;
 	}

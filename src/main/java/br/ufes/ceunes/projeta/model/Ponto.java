@@ -8,23 +8,51 @@ import javax.persistence.Id;
 @Entity
 public class Ponto {
 	
+	
+
 	@Id
-	Membro membro;
+	Long matricula;
 	Instant entrada;
 	Instant saida;
 	
-	public Ponto(Membro membro, Instant agora) {
+	
+	
+	
+	public Ponto() {
 		super();
-		this.membro = membro;
-		this.entrada = agora;
 	}
 
-	public Membro getMembro() {
-		return membro;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+		return result;
 	}
 
-	public void setMembro(Membro membro) {
-		this.membro = membro;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ponto other = (Ponto) obj;
+		if (matricula == null) {
+			if (other.matricula != null)
+				return false;
+		} else if (!matricula.equals(other.matricula))
+			return false;
+		return true;
+	}
+
+	
+	public Ponto(Long matricula, Instant entrada, Instant saida) {
+		super();
+		this.matricula = matricula;
+		this.entrada = entrada;
+		this.saida = saida;
 	}
 
 	public Instant getEntrada() {
