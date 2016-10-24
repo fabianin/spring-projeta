@@ -3,11 +3,18 @@ package br.ufes.ceunes.projeta.controllers;
 
 
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,15 +25,15 @@ import br.ufes.ceunes.projeta.model.Membro;
 import br.ufes.ceunes.projeta.model.Ponto;
 import br.ufes.ceunes.projeta.model.PontoAberto;
 import br.ufes.ceunes.projeta.model.TipoCargo;
-import br.ufes.ceunes.projeta.repository.JPAPontosAbertos;
 import br.ufes.ceunes.projeta.repository.JPAMembro;
+import br.ufes.ceunes.projeta.repository.JPAPontosAbertos;
 
 
 
 
 
 @Controller
-@RequestMapping("/")
+
 public class Home {
 	
 	@Autowired
@@ -35,6 +42,15 @@ public class Home {
 
 	@Autowired
 	private JPAPontosAbertos pontosAbertos;
+	
+	
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
+	            dateFormat, false));
+	}
 	
 	@RequestMapping("/")
 	@ResponseBody

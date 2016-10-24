@@ -6,8 +6,8 @@
         <title>Projeta Jr. - Soluções em EQ</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+        <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
 		<div th:replace="helpers :: navbar ('cadastro')"></div>
@@ -21,19 +21,19 @@
                         <div class="col-xs-4">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
-                                <input th:flied="*{nome}" class="form-control" type="text" name="nome" id="nome" required="true"/>
+                                <input th:field="*{nome}" class="form-control" type="text" name="nome" id="nome" th:required="true"/>
                             </div>
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group">
                                 <label for="sobrenome">Sobrenome</label>
-                                <input th:flied="*{sobrenome}" type="text" name="sobrenome" id="sobrenome" class="form-control" required="true"/>
+                                <input th:field="*{sobrenome}" type="text" name="sobrenome" id="sobrenome" class="form-control" required="true"/>
                             </div>
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group">
                                 <label for="curso">Curso</label>
-                                <input th:flied="*{curso}" class="form-control" type="text" name="curso" id="curso" required="true"/>
+                                <input th:field="*{curso}" class="form-control" type="text" name="curso" id="curso" required="true"/>
                             </div>
                         </div>
                     </div>
@@ -41,18 +41,18 @@
                         <div class="col-xs-4">
                             <div class="form-group">
                                 <label for="matricula">Matricula</label>
-                                <input th:flied="*{matricula}" class="form-control" type="text" name="matricula" id="matricula" required="true"/>
+                                <input th:field="*{matricula}" class="form-control" type="text" name="matricula" id="matricula" required="true"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="dataNascimento">Data de Nascimento</label>
-                                <input th:flied="*{dataNascimento}" class="form-control" type="date" name="nascimento" id="dataNascimento" required="true"/>
+                                <input th:field="*{dataNascimento}" th:value="${membro.dataNascimento}" class="form-control" type="date" name="nascimento" id="dataNascimento" required="true"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="naturalidade">Naturalidade</label>
-                            <input th:flied="*{naturalidade}" class="form-control" type="text" name="natulidade" id="naturalidade" required="true"/>
+                            <input th:field="*{naturalidade}" class="form-control" type="text" name="natulidade" id="naturalidade" required="true"/>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <div class="col-md-4">
                                 <label>Cargo</label>
-                                <select th:flied="*{cargo}" name="cargo" class="form-control">
+                                <select th:field="*{cargo}" name="cargo" class="form-control">
                                     <option value="">Selecione o Cargo</option>
 									<option th:each="cargo : ${cargo}"  th:value="${cargo}" th:text="${cargo.descricao}"/>
                                 </select>
@@ -71,13 +71,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Data admissão</label>
-                                <input th:flied="*{dataAdmissao}" type="date" name="admissao" class="form-control" required="true"/>
+                                <input th:field="*{dataAdmissao}" th:value="${membro.dataAdmissao}" type="date" name="admissao" class="form-control" required="true"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="dataDemissao">Data demissão</label>
-                                <input th:flied="*{dataDemissao}" type="date" id="dataDemissao" name="demissao" class="form-control"/>
+                                <input th:field="*{dataDemissao}" th:value="${membro.dataDemissao}" type="date" id="dataDemissao" name="demissao" class="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Senha</label>
-                                <input th:flied="*{senha}" class="form-control" type="password" name="senha" required="true"/>
+                                <input th:field="*{senha}" class="form-control" type="password" name="senha" required="true"/>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -98,7 +98,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="dicaSenha">Dica de senha</label>
-                                <input th:flied="*{dicaSenha}" class="form-control" type="text" name="dicaSenha" id="dicaSenha"/>
+                                <input th:field="*{dicaSenha}" class="form-control" type="text" name="dicaSenha" id="dicaSenha"/>
                             </div>
                         </div>
                     </div>

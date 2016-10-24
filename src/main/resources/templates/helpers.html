@@ -6,8 +6,8 @@
         <title></title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+        <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
     <div th:fragment="navbar(abaAtiva)">
@@ -22,6 +22,10 @@
 		      <li th:class="${abaAtiva == 'adm'}? active : null"><a th:href="@{/login}">Administrativo</a></li>
 		      <li th:class="${abaAtiva == 'listar'}? active : null"><a th:href="@{/listar}">Listar</a></li>
 		      <li th:class="${abaAtiva == 'ponto'}? active : null"><a th:href="@{/ponto}">Registrar Ponto</a></li>
+		    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li></li>
+		      <li><a href="#contact">Right</a></li>
 		    </ul>
 		  </div>
 		</nav>

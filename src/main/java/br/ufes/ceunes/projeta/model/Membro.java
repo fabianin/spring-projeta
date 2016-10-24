@@ -1,7 +1,7 @@
 package br.ufes.ceunes.projeta.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Membro {
@@ -18,9 +22,15 @@ public class Membro {
 	
 	@Id
 	private Long matricula;
-	private LocalDate dataAdmissao;
-	private LocalDate dataNascimento;
-	private LocalDate dataDemissao;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat (pattern="dd/MMM/YYYY")
+	private Date dataAdmissao;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat (pattern="dd/MMM/YYYY")
+	private Date dataNascimento;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat (pattern="dd/MMM/YYYY")
+	private Date dataDemissao;
 	private String senha;
 	private String dicaSenha;
 	private String naturalidade;
@@ -46,10 +56,10 @@ public class Membro {
 	public void setNaturalidade(String naturalidade) {
 		this.naturalidade = naturalidade;
 	}
-	public LocalDate getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	
@@ -85,16 +95,16 @@ public class Membro {
 	}
 
 
-	public LocalDate getDataAdmissao() {
+	public Date getDataAdmissao() {
 		return dataAdmissao;
 	}
-	public void setDataAdmissao(LocalDate dataAdmissao) {
+	public void setDataAdmissao(Date dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
 	}
-	public LocalDate getDataDemissao() {
+	public Date getDataDemissao() {
 		return dataDemissao;
 	}
-	public void setDataDemissao(LocalDate dataDemissao) {
+	public void setDataDemissao(Date dataDemissao) {
 		this.dataDemissao = dataDemissao;
 	}
 	public String getSenha() {
