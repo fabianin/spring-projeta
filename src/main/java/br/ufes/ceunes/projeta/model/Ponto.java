@@ -70,6 +70,14 @@ public class Ponto {
 	public void setSaida(Instant saida) {
 		this.saida = saida;
 	}
+
+	public Long getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Long matricula) {
+		this.matricula = matricula;
+	}
 	
 	
 }
