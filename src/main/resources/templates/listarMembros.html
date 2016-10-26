@@ -20,6 +20,7 @@
 					<th>Nome</th>
 					<th>Curso</th>
 					<th>Cargo</th>
+					<th>Admissao</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,6 +29,7 @@
 					<td th:text="${membro.nome}"></td>
 					<td th:text="${membro.curso}"></td>
 					<td th:text="${membro.cargo}"></td>
+					<td th:text="${#dates.format(membro.dataAdmissao, 'dd/mm/yyyy')}"></td>
 					
 				</tr>
 			</tbody>

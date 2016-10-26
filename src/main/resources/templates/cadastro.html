@@ -47,7 +47,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="dataNascimento">Data de Nascimento</label>
-                                <input th:field="*{dataNascimento}" th:value="${membro.dataNascimento}" class="form-control" type="date" name="dataNascimento" id="dataNascimento" th:required="true"/>
+                                <input th:field="*{dataNascimento}" th:value="${membro.dataNascimento}" class="form-control" type="text" name="dataNascimento" id="dataNascimento" th:required="true"/>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -71,13 +71,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Data admissão</label>
-                                <input th:field="*{dataAdmissao}" th:value="${membro.dataAdmissao}" type="date" name="dataAdmissao" class="form-control" th:required="true"/>
+                                <input th:field="*{dataAdmissao}" th:value="${membro.dataAdmissao}" type="text" name="dataAdmissao" class="form-control" th:required="true"/>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="dataDemissao">Data demissão</label>
-                                <input th:field="*{dataDemissao}" th:value="${membro.dataDemissao}" type="date" id="dataDemissao" name="demissao" class="form-control"/>
+                                <input th:field="*{dataDemissao}" th:value="${membro.dataDemissao}" type="text" id="dataDemissao" name="demissao" class="form-control"/>
                             </div>
                         </div>
                     </div>
