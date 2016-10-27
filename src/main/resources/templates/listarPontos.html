@@ -24,8 +24,8 @@
 			<tbody>
 				<tr th:each="ponto : ${pontos}">
 					<td th:text="${ponto.matricula}"></td>
-					<td th:text="${#temporals.format(ponto.entrada,'dd/MMM/yyyy HH:mm')}"></td>
-					<td th:text="${ponto.saida}"></td>
+					<td th:text="${#temporals.format(ponto.entrada)}"></td>
+					<td th:text="${#temporals.format(ponto.saida)}"></td>
 					
 				</tr>
 			</tbody>
