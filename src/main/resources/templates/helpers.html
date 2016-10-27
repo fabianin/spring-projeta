@@ -20,7 +20,7 @@
 		      <li th:class="${abaAtiva == 'home'}? active : null"><a th:href="@{/}">Home</a></li>
 		      <li th:class="${abaAtiva == 'cadastro'}? active : null"><a th:href="@{/cadastro}">Cadastrar Membros</a></li>
 		      <li th:class="${abaAtiva == 'adm'}? active : null"><a th:href="@{/login}">Administrativo</a></li>
-		      <li th:class="${abaAtiva == 'listar'}? active : null"><a th:href="@{/listar}">Listar</a></li>
+		      <li th:class="${abaAtiva == 'listar'}? active : null"><a th:href="@{/listar/membros}">Listar Membros</a></li>
 		      <li th:class="${abaAtiva == 'ponto'}? active : null"><a th:href="@{/ponto}">Registrar Ponto</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
@@ -30,17 +30,6 @@
 		  </div>
 		</nav>
 	</div>
-
-	<div th:fragment="abasListas(ativa)">
-		<ul class="nav nav-pills">
-			<!-- <li role="presentation" th:class="${ativa=='home'} ? active : null"><a href="#">Home</a></li> -->
-			<li role="presentation" th:class="${ativa=='membros'} ? active : null"><a th:href="@{/listar/membros}">Membros</a></li>
-			<li role="presentation" th:class="${ativa=='ponto'} ? active : null"><a href="#">Pontos por membro</a></li>
-		</ul>
-	</div>
-	
-
-	
 	
   	</body>
 </html>

@@ -2,6 +2,8 @@ package br.ufes.ceunes.projeta.model;
 
 import java.time.Instant;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -11,6 +13,8 @@ public class Ponto {
 	
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long id;
 	Long matricula;
 	Instant entrada;
 	Instant saida;

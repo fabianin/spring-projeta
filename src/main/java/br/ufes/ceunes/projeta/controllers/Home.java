@@ -10,9 +10,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -83,7 +87,7 @@ public class Home {
 	}
 	
 	@RequestMapping("/listar/membros")
-	public ModelAndView listarMembros(){
+	public ModelAndView listarMembros(Membro membro){
 		ModelAndView mv = new ModelAndView("listarMembros");
 		List<Membro> todosMembros = membros.findAll();
 		mv.addObject("membros", todosMembros);
@@ -119,13 +123,24 @@ public class Home {
 		}
 		
 	}
-	@RequestMapping("/listar/pontos")
-	public ModelAndView listarPontos(){
+	@RequestMapping("/listar/ponto/{matricula}")
+	public ModelAndView listarPontos(@PathVariable("matricula") Membro membro){
 		ModelAndView mv = new ModelAndView("listarPontos");
-		List<Ponto> todosPontos = membros.getOne(Long.getLong("2014101879")).getPontos();
+		List<Ponto> todosPontos = membro.getPontos();
 		if(todosPontos == null)
 			return new ModelAndView("home");
 		mv.addObject("pontos", todosPontos);
+		return mv;
+	}
+	
+	@RequestMapping("/listar/membro/pesquisa")
+	public ModelAndView pesquisa(Membro membro){
+		ModelAndView mv = new ModelAndView("listarMembros");
+		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.CONTAINING);
+		Example<Membro> example = Example.of(membro,matcher);
+		List<Membro> todosMembros = membros.findAll(example);
+		mv.addObject("membros",todosMembros);
+		mv.addObject("cargos",TipoCargo.values());
 		return mv;
 	}
 	
