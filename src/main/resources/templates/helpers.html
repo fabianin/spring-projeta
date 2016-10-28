@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+      xmlns:th="http://www.thymeleaf.org" lang="pt-br"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <head>
         <title></title>
@@ -18,15 +19,15 @@
 		    </div>
 		    <ul class="nav navbar-nav">
 		      <li th:class="${abaAtiva == 'home'}? active : null"><a th:href="@{/}">Home</a></li>
-		      <li th:class="${abaAtiva == 'cadastro'}? active : null"><a th:href="@{/cadastro}">Cadastrar Membros</a></li>
-		      <li th:class="${abaAtiva == 'adm'}? active : null"><a th:href="@{/login}">Administrativo</a></li>
-		      <li th:class="${abaAtiva == 'listar'}? active : null"><a th:href="@{/listar/membros}">Listar Membros</a></li>
+		      <li th:class="${abaAtiva == 'cadastro'}? active : null" sec:authorize-url="/cadastro"><a th:href="@{/cadastro}">Cadastrar Membros</a></li>
+		      <li th:class="${abaAtiva == 'listar'}? active : null"   sec:authorize-url="/listar/membros"><a th:href="@{/listar/membros}">Listar Membros</a></li>
 		      <li th:class="${abaAtiva == 'ponto'}? active : null"><a th:href="@{/ponto}">Registrar Ponto</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		      <li></li>
-		      <li><a href="#contact">Right</a></li>
-		    </ul>
+				<li sec:authorize="not isAnonymous()"> <p th:class="navbar-text" th:text="${#authentication.name}"></p></li>
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				<li th:class="${abaAtiva == 'adm'}? active : null" sec:authorize="not isAuthenticated()"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
 		  </div>
 		</nav>
 	</div>

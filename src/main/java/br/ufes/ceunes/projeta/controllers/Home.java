@@ -67,10 +67,6 @@ public class Home {
 
 		return mv;
 	}
-	@RequestMapping("/login")
-	public ModelAndView login(){
-		return new ModelAndView("login");
-	}
 	
 	@RequestMapping(value ="/cadastro", method=RequestMethod.POST)
 	public ModelAndView cadastrar(Membro membro){

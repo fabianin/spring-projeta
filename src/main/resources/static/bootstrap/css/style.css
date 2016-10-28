@@ -1,0 +1,15 @@
+.loginJumbotron{
+	width: 500px;
+    
+}
+.fundo {
+	witdh: 700px;
+	height: 700px;
+	background-image: url("../img/LOGO-0.6.png");
+	background-repeat: no-repeat;
+	background-size: 700px;
+	background-position: center;
+	background-attachment: fixed;
+	z-index: 0;
+	
+}
