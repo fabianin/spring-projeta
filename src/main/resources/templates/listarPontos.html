@@ -19,6 +19,7 @@
 					<th>Matricula</th>
 					<th>Entrada</th>
 					<th>Saida</th>
+					<th>Duração</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +27,7 @@
 					<td th:text="${ponto.matricula}"></td>
 					<td th:text="${#temporals.format(ponto.entrada)}"></td>
 					<td th:text="${#temporals.format(ponto.saida)}"></td>
+					<td th:text="${ponto.duracaoHours} + ' horas e ' + ${ponto.duracaoMinutes} + ' minutos'"></td>
 					
 				</tr>
 			</tbody>

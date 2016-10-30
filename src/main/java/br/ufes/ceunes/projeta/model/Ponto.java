@@ -1,6 +1,8 @@
 package br.ufes.ceunes.projeta.model;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,8 @@ public class Ponto {
 	Long matricula;
 	Instant entrada;
 	Instant saida;
-	
+	Long duracaoHours;
+	Long duracaoMinutes;
 	
 	
 	
@@ -57,6 +60,26 @@ public class Ponto {
 		this.matricula = matricula;
 		this.entrada = entrada;
 		this.saida = saida;
+		duracaoHours = entrada.until(saida, ChronoUnit.HOURS);
+		entrada = entrada.plus(duracaoHours, ChronoUnit.HOURS);
+		duracaoMinutes = entrada.until(saida, ChronoUnit.MINUTES);
+		entrada = entrada.minus(duracaoHours, ChronoUnit.HOURS);
+	}
+
+	public Long getDuracaoHours() {
+		return duracaoHours;
+	}
+
+	public void setDuracaoHours(Long duracaoHours) {
+		this.duracaoHours = duracaoHours;
+	}
+
+	public Long getDuracaoMinutes() {
+		return duracaoMinutes;
+	}
+
+	public void setDuracaoMinutes(Long duracaoMinutes) {
+		this.duracaoMinutes = duracaoMinutes;
 	}
 
 	public Instant getEntrada() {

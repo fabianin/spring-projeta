@@ -4,48 +4,100 @@
 
     <head>
         <title>Projeta Jr. - Soluções em EQ</title>
-        <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+        <meta charset="UTF-8"/>
+        <script type="text/javascript" th:src="@{/bootstrap/js/jquery-3.1.1.min.js}"></script>
         <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>        
+        <link rel="stylesheet" th:href="@{/bootstrap/css/animate.css}"/>
+        <link th:href="@{/bootstrap/css/hover-min.css}" rel="stylesheet" media="all"/>
+        <link rel="stylesheet" th:href="@{/bootstrap/css/style.css}"/>
+        
+        
+        
+        
     </head>
     <body>
-    <div th:replace="helpers :: navbar ('home')"></div>
-    <div class="container">
-		<div class="jumbotron">
+      <div th:replace="helpers :: navbar ('home')"></div>
+
       <div class="container">
-        <h1>Projeta Jr. - Soluções em EQ</h1>
-        <p>Esse é o sistema de registro de atividades da Projeta Jr. para mais informações clique no botão abaixo</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Como usar &raquo;</a></p>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Empresa Jr?</h2>
-          <p>O objetivo primeiro das empresas juniores é promover a melhor experiência de mercado aos alunos graduandos na instituição à qual ela é vinculada. Por esse objetivo entende-se fomentar o crescimento pessoal e profissional do aluno membro, por meio do oferecimento de serviços de qualidade e a baixo custo ao mercado. </p>
-          <p><a class="btn btn-default" href="http://www.universitario.com.br/noticias/n.php?i=5631" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Membros</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Projetos</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    		<div class="jumbotron">
+          <div class="container">
+            <h1>Projeta Jr. - Soluções em EQ</h1>
+            <p class="text-justify">Esse é o sistema de registro de atividades da Projeta Jr. para mais informações clique no botão abaixo</p>
+            <p><a class="btn btn-default btn-como-usar btn-lg hvr-bounce-to-bottom" href="#comoUsarModal" data-toggle="modal" data-target="#comoUsarModal" role="button">Como usar &raquo;</a></p>
+          </div>
         </div>
       </div>
 
-      <hr/>
+      <div class="container">
+        <!-- Example row of columns -->
+        
+        <div class="row">
+          <div class="col-md-4 col-sm-12 item1">
+            <div class="panel hvr-bounce-in">
+              <h2>Empresa Jr?</h2>
+              <p class="text-justify">O objetivo primeiro das empresas juniores é promover a melhor experiência de mercado aos alunos graduandos na instituição à qual ela é vinculada. Por esse objetivo entende-se fomentar o crescimento pessoal e profissional do aluno membro, por meio do oferecimento de serviços de qualidade e a baixo custo ao mercado. </p>
+              <p><a class="btn btn-default" href="http://www.universitario.com.br/noticias/n.php?i=5631" role="button">View details &raquo;</a></p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 item2">
+            <div class="panel hvr-bounce-in">
+              <h2>Membros</h2>
+              <p class="text-justify">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 item3">
+            <div class="panel hvr-bounce-in">
+              <h2>Projetos</h2>
+              <p class="text-justify">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+          </div>
+        </div>
 
-      <footer>
-        <p>&copy; 2016 Company, Inc.</p>
-      </footer>
-    </div> 
-    </div>
+      </div>
+
+        <hr/>
+
+        <footer>
+          <p class="text-center">&copy; 2016 Company, Inc.</p>
+        </footer>
+
+        <!--MODAL COMO USAR-->
+        <div class="modal fade" id="comoUsarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Como usar</h4>
+              </div>
+              <div class="modal-body">
+                Informações
+              </div>
+            </div>
+          </div>
+        </div>
+     
+      
     </body>
+    
+	
+    <script type="text/javascript">
+    $(document ).ready(function(){
+    	$('.btn-gay').on('click',function(){
+    		$(this).addClass('animated fadeInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+    			$(this).removeClass('animated fadeInLeft');
+    		});
+    	
+    	});
+    	$('.jumbotron').addClass('animated fadeInLeft');
+      $('.item1').addClass('animated zoomIn');
+      $('.item2').addClass('animated zoomIn');
+      $('.item3').addClass('animated zoomIn');
+
+
+    });
+    </script>
 </html>

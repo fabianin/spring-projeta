@@ -115,7 +115,7 @@ public class Home {
 		}else {
 			PontoAberto pontoAberto = new PontoAberto(membroLogin.getMatricula(), Instant.now());
 			pontosAbertos.save(pontoAberto);
-			return new ModelAndView("listarMembros");
+			return new ModelAndView("home");
 		}
 		
 	}
@@ -129,11 +129,11 @@ public class Home {
 		return mv;
 	}
 	
-	@RequestMapping("/listar/membro/pesquisa")
+	@RequestMapping(value = "/listar/membros", method=RequestMethod.POST)
 	public ModelAndView pesquisa(Membro membro){
 		ModelAndView mv = new ModelAndView("listarMembros");
-		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.CONTAINING);
-		Example<Membro> example = Example.of(membro,matcher);
+		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.STARTING);
+		Example<Membro> example = Example.of(membro, matcher);
 		List<Membro> todosMembros = membros.findAll(example);
 		mv.addObject("membros",todosMembros);
 		mv.addObject("cargos",TipoCargo.values());
