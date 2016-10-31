@@ -23,14 +23,14 @@ public class Membro {
 	@Id
 	private Long matricula;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat (pattern="dd/MM/yyyy")
+	@DateTimeFormat (pattern="yyyy-MM-dd")
 	private Date dataAdmissao;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat (pattern="dd/MM/yyyy")
+	@DateTimeFormat (pattern="yyyy-MM-dd")
 	private Date dataNascimento;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat (pattern="dd/MM/yyyy")
-	private Date dataDemissao = new Date();
+	@DateTimeFormat (pattern="yyyy-MM-dd")
+	private Date dataDemissao;
 	private String senha;
 	private String dicaSenha;
 	private String naturalidade;

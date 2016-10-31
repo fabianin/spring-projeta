@@ -3,19 +3,14 @@ package br.ufes.ceunes.projeta.controllers;
 
 
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,12 +42,12 @@ public class Home {
 	
 	
 	
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
-	            dateFormat, false));
-	}
+//	@InitBinder
+//	protected void initBinder(WebDataBinder binder) {
+//	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
+//	            dateFormat, false));
+//	}
 	
 	@RequestMapping("/")
 	@ResponseBody
@@ -132,7 +127,7 @@ public class Home {
 	@RequestMapping(value = "/listar/membros", method=RequestMethod.POST)
 	public ModelAndView pesquisa(Membro membro){
 		ModelAndView mv = new ModelAndView("listarMembros");
-		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.STARTING);
+		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.CONTAINING);
 		Example<Membro> example = Example.of(membro, matcher);
 		List<Membro> todosMembros = membros.findAll(example);
 		mv.addObject("membros",todosMembros);
