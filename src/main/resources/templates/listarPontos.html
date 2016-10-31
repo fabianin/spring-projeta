@@ -6,13 +6,26 @@
         <title>Projeta Jr. - Soluções em EQ</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <script type="text/javascript" th:src="@{/bootstrap/js/jquery-3.1.1.min.js}"></script>
         <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
         <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
 	<div th:replace="helpers :: navbar ('listar')"></div>
 	<div class="container">
-	<div class="table-responsive">
+	
+	<div th:if="${#lists.isEmpty(pontos)}">
+		
+		<div class="col-sm-4 col-sm-offset-4">
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<p class="text-center">Nenhum ponto registrado.</p>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="table-responsive" th:if="not ${#lists.isEmpty(pontos)}">
 		<table class="table table-striped table-bordered table-hover table-condensed">
 			<thead>
 				<tr>
@@ -29,6 +42,12 @@
 					<td th:text="${#temporals.format(ponto.saida)}"></td>
 					<td th:text="${ponto.duracaoHours} + ' horas e ' + ${ponto.duracaoMinutes} + ' minutos'"></td>
 					
+				</tr>
+				<tr th:if="${pontoaberto}">
+					<td th:text="${pontoaberto.matricula}"></td>
+					<td th:text="${#temporals.format(pontoaberto.entrada)}"></td>
+					<td th:text="Aberto"></td>
+					<td>???</td>
 				</tr>
 			</tbody>
 		</table>

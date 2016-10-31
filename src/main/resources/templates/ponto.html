@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div th:replace="helpers :: navbar ('ponto')"></div>
-	<form class="form form-inline" action="ponto" method="POST" th:object="${login}">
+	<form class="form form-inline" method="POST" th:object="${login}">
 		<div class="form-group col-md-offset-3">
 			<label>Matricula</label>
 			<input class="form-control" type="text" name="Matricula" th:field="*{matricula}"/>
@@ -20,7 +20,8 @@
 			<label>Senha</label>
 			<input class="form-control" type="password" name="senha" th:field="*{senha}"/>
 		</div>
-		<input class="form-control btn btn-primary" type="submit" value="Enviar"/>
+		<input formaction="ponto" class="form-control btn btn-primary" type="submit" value="Enviar"/>
+		<input type="submit" formaction="relatorio" class="btn btn-info" th:href="@{/relatorio}" value="Gerar relatório"/>
 	</form>
 </body>
 </html>

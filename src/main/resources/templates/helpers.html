@@ -27,7 +27,7 @@
 		      <li th:class="${abaAtiva == 'ponto'}? active : null"><a th:href="@{/ponto}">Registrar Ponto</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-				<li sec:authorize="not isAnonymous()"> <p th:class="navbar-text" th:text="${#authentication.name}"></p></li>
+				<li sec:authorize="not isAnonymous()"> <p th:class="navbar-text" th:text="${#strings.capitalize(#authentication.name)}"></p></li>
 				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 				<li th:class="${abaAtiva == 'adm'}? active : null" sec:authorize="not isAuthenticated()"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>

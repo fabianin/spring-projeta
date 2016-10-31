@@ -97,8 +97,10 @@ public class Home {
 			return new ModelAndView("cadastro");
 			
 		}
-		if(membroLogin.getSenha() != login.getSenha()){
-			new ModelAndView("login");
+		if(!membroLogin.getSenha().equals(login.getSenha())){
+			System.out.println("******" + login.getSenha()+"*******");
+			System.out.println("******" + membroLogin.getSenha()+"*******");
+			return new ModelAndView("login");
 		}
 		if(pontosAbertos.findOne(membroLogin.getMatricula())!=null){
 			PontoAberto pontoAberto = pontosAbertos.findOne(membroLogin.getMatricula());
@@ -118,8 +120,8 @@ public class Home {
 	public ModelAndView listarPontos(@PathVariable("matricula") Membro membro){
 		ModelAndView mv = new ModelAndView("listarPontos");
 		List<Ponto> todosPontos = membro.getPontos();
-		if(todosPontos == null)
-			return new ModelAndView("home");
+		PontoAberto pontoAberto = pontosAbertos.findOne(membro.getMatricula());
+		mv.addObject("pontoaberto",pontoAberto);
 		mv.addObject("pontos", todosPontos);
 		return mv;
 	}
@@ -135,6 +137,20 @@ public class Home {
 		return mv;
 	}
 	
+	@RequestMapping(value ="/relatorio", method=RequestMethod.POST)
+	public ModelAndView relatorio(Login login){
+		Membro membroLogin = membros.findOne(login.getMatricula().longValue());
+		if(!membroLogin.getSenha().equals(login.getSenha())){
+			return new ModelAndView("/");
+		}
+		PontoAberto pontoAberto = pontosAbertos.findOne(membroLogin.getMatricula());
+		ModelAndView mv = new ModelAndView("listarPontos");
+		mv.addObject("pontoaberto",pontoAberto);
+		List<Ponto> todosPontos = membroLogin.getPontos();
+		mv.addObject("pontos", todosPontos);
+		return mv;
+		
+	}
 	
 	
 	
