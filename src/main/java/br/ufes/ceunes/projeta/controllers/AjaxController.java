@@ -1,5 +1,6 @@
 package br.ufes.ceunes.projeta.controllers;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +65,24 @@ public class AjaxController {
 			return -1;
 			
 		}
-		return 1;
+		if(!membroLogin.getSenha().equals(login.getSenha())){
+			System.out.println("******" + login.getSenha()+"*******");
+			System.out.println("******" + membroLogin.getSenha()+"*******");
+			return -2;
+		}
+		if(pontosAbertos.findOne(membroLogin.getMatricula())!=null){
+			PontoAberto pontoAberto = pontosAbertos.findOne(membroLogin.getMatricula());
+			Ponto pontoFechando = new Ponto(pontoAberto.getMatricula(), pontoAberto.getEntrada(), Instant.now());
+			membroLogin.getPontos().add(pontoFechando);
+			membros.save(membroLogin);
+			pontosAbertos.delete(pontoAberto);
+			return 1;
+		}else {
+			PontoAberto pontoAberto = new PontoAberto(membroLogin.getMatricula(), Instant.now());
+			pontosAbertos.save(pontoAberto);
+			return 2;
+		}
+		
 	}
 
 }
