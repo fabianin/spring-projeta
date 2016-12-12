@@ -48,7 +48,7 @@ public class AjaxController {
 	public void delete(Membro membro){
 		membros.delete(membro);
 	}
-	@PutMapping("/editar")
+	@PostMapping("/editar")
 	public void editar(Membro membro){
 		membros.save(membro);
 	}
