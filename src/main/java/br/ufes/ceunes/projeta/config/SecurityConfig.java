@@ -13,10 +13,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.authorizeRequests().antMatchers("/cadastro/**","/listar/**").hasRole("rh").anyRequest().permitAll()
-		.and().formLogin().loginPage("/login").permitAll()
-		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.and().csrf().disable();
+		
+		http.authorizeRequests().anyRequest().permitAll();
+//		http.authorizeRequests().antMatchers("/cadastro/**","/listar/**").hasRole("rh").anyRequest().permitAll()
+//		.and().formLogin().loginPage("/login").permitAll()
+//		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//		.and().csrf().disable();
 	}
 	
 	public void configure(WebSecurity web) throws Exception{
