@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,6 +55,16 @@ public class AjaxController {
 	@GetMapping("/listar/membro/{matricula}")
 	public Membro listarMembro(@PathVariable("matricula") Membro membro){
 		return membro;
+	}
+	
+	@PostMapping("/registrar/ponto")
+	public int salvarPonto(Login login){
+		Membro membroLogin = membros.findOne(login.getMatricula().longValue());
+		if(membroLogin == null){
+			return -1;
+			
+		}
+		return 1;
 	}
 
 }
