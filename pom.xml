@@ -6,8 +6,9 @@
 	<groupId>br.ufes.ceunes.projeta</groupId>
 	<artifactId>Projeta1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
+	<!-- <packaging>jar</packaging>  -->
+	<packaging>war</packaging>
+	
 	<name>Projeta1</name>
 	<description>Projeto do controle de ponto.</description>
 
@@ -34,7 +35,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	
-
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-tomcat</artifactId>
+	        <scope>provided</scope>
+	    </dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -100,7 +105,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+			</plugin>	
 		</plugins>
 	</build>
 
