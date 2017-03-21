@@ -30,7 +30,6 @@ import br.ufes.ceunes.projeta.repository.JPAPontosAbertos;
 
 
 @Controller
-
 public class Home {
 	
 	@Autowired
