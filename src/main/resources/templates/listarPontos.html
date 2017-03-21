@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <script type="text/javascript" th:src="@{/bootstrap/js/jquery-3.1.1.min.js}"></script>
         <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/bootstrap/css/style.css}"/>
         <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
@@ -36,12 +37,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="ponto : ${pontos}">
-					<td th:text="${ponto.matricula}"></td>
+				<tr th:each="ponto : ${pontos}" >
+					<td th:class="${ponto.duracaoHours} ? null : destaque" th:text="${ponto.matricula}"></td>
 					<td th:text="${#temporals.format(ponto.entrada)}"></td>
 					<td th:text="${#temporals.format(ponto.saida)}"></td>
 					<td th:text="${ponto.duracaoHours} + ' horas e ' + ${ponto.duracaoMinutes} + ' minutos'"></td>
-					
 				</tr>
 				<tr th:if="${pontoaberto}">
 					<td th:text="${pontoaberto.matricula}"></td>

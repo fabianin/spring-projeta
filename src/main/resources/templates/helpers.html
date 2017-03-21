@@ -22,8 +22,8 @@
 		    </div>
 		    <ul class="nav navbar-nav">
 		      <li th:class="${abaAtiva == 'home'}? active : null"><a th:href="@{/}">Home</a></li>
-		      <li th:class="${abaAtiva == 'cadastro'}? active : null" sec:authorize-url="/cadastro"><a th:href="@{/cadastro}">Cadastrar Membros</a></li>
-		      <li th:class="${abaAtiva == 'listar'}? active : null"   sec:authorize-url="/listar/membros"><a th:href="@{/listar/membros}">Listar Membros</a></li>
+		      <li sec:authorize="isAuthenticated()" th:class="${abaAtiva == 'cadastro'}? active : null" sec:authorize-url="/cadastro"><a th:href="@{/cadastro}">Cadastrar Membros</a></li>
+		      <li sec:authorize="isAuthenticated()" th:class="${abaAtiva == 'listar'}? active : null"   sec:authorize-url="/listar/membros"><a th:href="@{/listar/membros}">Listar Membros</a></li>
 		      <li th:class="${abaAtiva == 'ponto'}? active : null"><a th:href="@{/ponto}">Registrar Ponto</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">

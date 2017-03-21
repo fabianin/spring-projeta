@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -13,11 +14,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		
-		http.authorizeRequests().anyRequest().permitAll().and().cors().disable().csrf().disable();
-//		http.authorizeRequests().antMatchers("/cadastro/**","/listar/**").hasRole("rh").anyRequest().permitAll()
-//		.and().formLogin().loginPage("/login").permitAll()
-//		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//		.and().csrf().disable();
+		http.authorizeRequests().antMatchers("/cadastro/**","/listar/**").hasRole("rh").anyRequest().permitAll()
+		.and().formLogin().loginPage("/login").permitAll()
+		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.and().csrf().disable();
 	}
 	
 	public void configure(WebSecurity web) throws Exception{

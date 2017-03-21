@@ -15,6 +15,11 @@
 	
 }
 
+.destaque{
+	background-color: #FF6347;
+}
+
+
 .panel{
 	-o-transition: 1s;
 	transition: 1s;

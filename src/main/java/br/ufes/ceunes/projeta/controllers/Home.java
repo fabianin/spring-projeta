@@ -82,6 +82,7 @@ public class Home {
 		ModelAndView mv = new ModelAndView("listarMembros");
 		List<Membro> todosMembros = membros.findAll();
 		mv.addObject("membros", todosMembros);
+		
 		return mv;
 	}
 	@RequestMapping("/ponto")

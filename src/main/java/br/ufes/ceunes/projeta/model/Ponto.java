@@ -22,7 +22,7 @@ public class Ponto {
 	Instant saida;
 	Long duracaoHours;
 	Long duracaoMinutes;
-	
+	Long duracao=Long.parseLong("2");
 	
 	
 	public Ponto() {
