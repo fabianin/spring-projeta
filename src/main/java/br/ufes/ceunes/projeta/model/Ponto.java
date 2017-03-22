@@ -10,12 +10,14 @@ import javax.persistence.Id;
 
 
 @Entity
+@Table(name = "ponto")
 public class Ponto {
 	
 	
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	Long id;
 	Long matricula;
 	Instant entrada;
