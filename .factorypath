@@ -71,6 +71,13 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-tx/4.3.3.RELEASE/spring-tx-4.3.3.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/jcl-over-slf4j/1.7.21/jcl-over-slf4j-1.7.21.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-aspects/4.3.3.RELEASE/spring-aspects-4.3.3.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-starter-cloud-connectors/1.4.1.RELEASE/spring-boot-starter-cloud-connectors-1.4.1.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/cloud/spring-cloud-spring-service-connector/1.2.3.RELEASE/spring-cloud-spring-service-connector-1.2.3.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/cloud/spring-cloud-core/1.2.3.RELEASE/spring-cloud-core-1.2.3.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/cloud/spring-cloud-cloudfoundry-connector/1.2.3.RELEASE/spring-cloud-cloudfoundry-connector-1.2.3.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/cloud/spring-cloud-heroku-connector/1.2.3.RELEASE/spring-cloud-heroku-connector-1.2.3.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/cloud/spring-cloud-localconfig-connector/1.2.3.RELEASE/spring-cloud-localconfig-connector-1.2.3.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-configuration-processor/1.4.1.RELEASE/spring-boot-configuration-processor-1.4.1.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/json/json/20140107/json-20140107.jar" enabled="true" runInBatchMode="false"/>
